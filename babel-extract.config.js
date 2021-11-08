@@ -101,6 +101,7 @@ module.exports = {
           '',
         ],
         slotName: [...new Set(Object.values(GEAR_SLOTS).map((item) => item.name))],
+        slotShort: [...new Set(Object.values(GEAR_SLOTS).map((item) => item.short))],
         affix: Object.keys(Affix),
       },
     ],

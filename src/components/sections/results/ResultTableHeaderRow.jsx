@@ -1,6 +1,6 @@
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
-import { Trans } from 'gatsby-plugin-react-i18next';
+import { Trans, useTranslation } from 'gatsby-plugin-react-i18next';
 import { Item } from 'gw2-ui-bulk';
 import React from 'react';
 import { useSelector } from 'react-redux';
@@ -11,6 +11,7 @@ import { Slots } from '../../../utils/gw2-data';
 const ResultTableHeaderRow = ({ classes }) => {
   const wield = useSelector(getPriority('weaponType'));
   const infusions = useSelector(getInfusions);
+  const { t } = useTranslation();
 
   return (
     <TableRow>
@@ -19,7 +20,10 @@ const ResultTableHeaderRow = ({ classes }) => {
       </TableCell>
       {Slots[wield].map((slot) => (
         <TableCell className={classes.tablehead} key={slot.name} align="center" padding="none">
-          {slot.short}
+          {
+            // i18next-extract-mark-context-next-line {{slotShort}}
+            t('slotShort', { context: slot.short })
+          }
         </TableCell>
       ))}
       {infusions.primaryInfusion ? (

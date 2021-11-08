@@ -1,5 +1,6 @@
 import { List, ListItem, ListItemText, withStyles } from '@material-ui/core';
 import { Item } from 'gw2-ui-bulk';
+import { useTranslation } from 'gatsby-plugin-react-i18next';
 import React from 'react';
 import { resolveArmor } from '../../utils/map-gw2-ids';
 
@@ -70,6 +71,7 @@ const Armor = ({ classes, weight, ...rest }) => {
     bootsAffix,
     bootsRune,
   } = resolveArmor({ weight, ...rest });
+  const { t } = useTranslation();
 
   return (
     <List disablePadding>
@@ -84,7 +86,14 @@ const Armor = ({ classes, weight, ...rest }) => {
           disableText
           className={classes.gw2Item}
         />
-        <ListItemText primary={helmAffix} secondary={helmRune} className={classes.listItemText} />
+        <ListItemText
+          primary={
+            // i18next-extract-mark-context-next-line {{affix}}
+            t('affix', { context: helmAffix })
+          }
+          secondary={helmRune}
+          className={classes.listItemText}
+        />
       </ListItem>
 
       <ListItem disableGutters className={classes.listItem}>
@@ -99,7 +108,10 @@ const Armor = ({ classes, weight, ...rest }) => {
           className={classes.gw2Item}
         />
         <ListItemText
-          primary={shouldersAffix}
+          primary={
+            // i18next-extract-mark-context-next-line {{affix}}
+            t('affix', { context: shouldersAffix })
+          }
           secondary={shouldersRune}
           className={classes.listItemText}
         />
@@ -116,7 +128,14 @@ const Armor = ({ classes, weight, ...rest }) => {
           disableText
           className={classes.gw2Item}
         />
-        <ListItemText primary={coatAffix} secondary={coatRune} className={classes.listItemText} />
+        <ListItemText
+          primary={
+            // i18next-extract-mark-context-next-line {{affix}}
+            t('affix', { context: coatAffix })
+          }
+          secondary={coatRune}
+          className={classes.listItemText}
+        />
       </ListItem>
 
       <ListItem disableGutters className={classes.listItem}>
@@ -131,7 +150,10 @@ const Armor = ({ classes, weight, ...rest }) => {
           className={classes.gw2Item}
         />
         <ListItemText
-          primary={glovesAffix}
+          primary={
+            // i18next-extract-mark-context-next-line {{affix}}
+            t('affix', { context: glovesAffix })
+          }
           secondary={glovesRune}
           className={classes.listItemText}
         />
@@ -149,7 +171,10 @@ const Armor = ({ classes, weight, ...rest }) => {
           className={classes.gw2Item}
         />
         <ListItemText
-          primary={leggingsAffix}
+          primary={
+            // i18next-extract-mark-context-next-line {{affix}}
+            t('affix', { context: leggingsAffix })
+          }
           secondary={leggingsRune}
           className={classes.listItemText}
         />
@@ -166,7 +191,14 @@ const Armor = ({ classes, weight, ...rest }) => {
           disableText
           className={classes.gw2Item}
         />
-        <ListItemText primary={bootsAffix} secondary={bootsRune} className={classes.listItemText} />
+        <ListItemText
+          primary={
+            // i18next-extract-mark-context-next-line {{affix}}
+            t('affix', { context: bootsAffix })
+          }
+          secondary={bootsRune}
+          className={classes.listItemText}
+        />
       </ListItem>
     </List>
   );

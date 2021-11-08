@@ -29,7 +29,10 @@ const Affixes = ({ classes }) => {
       disableCloseOnSelect
       id="tags-standard"
       options={AFFIXES}
-      getOptionLabel={(option) => firstUppercase(option)}
+      getOptionLabel={(option) =>
+        // i18next-extract-mark-context-next-line {{affix}}
+        firstUppercase(t('affix', { context: option }))
+      }
       value={affixes}
       onChange={(event, value) => dispatch(changePriority({ key: 'affixes', value }))}
       renderInput={(params) => (

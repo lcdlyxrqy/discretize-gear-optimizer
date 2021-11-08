@@ -2,11 +2,14 @@ import { Typography } from '@material-ui/core';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import React from 'react';
+import { useTranslation, useI18next } from 'gatsby-plugin-react-i18next';
 import { useDispatch } from 'react-redux';
 import { changeSelectedCharacter } from '../../../state/controlsSlice';
 
 const ResultTableRow = ({ character, selected, mostCommonAffix }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
+  const { language } = useI18next();
 
   return (
     <TableRow
@@ -28,7 +31,10 @@ const ResultTableRow = ({ character, selected, mostCommonAffix }) => {
                 : { fontWeight: 300, fontSize: '1rem' }
             }
           >
-            {element.slice(0, 4)}
+            {
+              // i18next-extract-mark-context-next-line {{affix}}
+              t('affix', { context: element }).slice(0, language === 'zh' ? 2 : 4)
+            }
           </Typography>
         </TableCell>
       ))}

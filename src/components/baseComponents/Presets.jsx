@@ -33,7 +33,10 @@ const Presets = ({ className, data, handleClick, presetCategory }) => {
           key={`${selectedTemplateName || profession}-presets`}
           id="presets"
           options={data}
-          getOptionLabel={(preset) => preset.name}
+          getOptionLabel={(preset) =>
+            // i18next-extract-mark-context-next-line {{presetName}}
+            t(`preset`, { context: `${presetCategory}_${preset.name}` })
+          }
           renderInput={(params) => <TextField {...params} label="Presets" variant="standard" />}
           renderOption={(preset) =>
             preset.profession ? (
